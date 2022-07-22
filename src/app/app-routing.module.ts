@@ -6,7 +6,7 @@ import { AuthGuard } from '@core/services/auth.guard';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
-  { path: 'auth', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
+  { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) },
   { path: 'pets', canActivate: [ AuthGuard ], loadChildren: () => import('./modules/pets/pets.module').then(m => m.PetsModule) },
 
   { path: '**', component: NotFoundComponent }

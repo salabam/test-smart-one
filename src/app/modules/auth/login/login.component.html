@@ -1,0 +1,27 @@
+<div class="login">
+    <div class="login__header">
+        <h1>Login</h1>
+    </div>
+    <div class="login__content">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Login</mat-label>
+                <input formControlName="login" matInput type="text">
+                <mat-error *ngIf="form.get('login')?.hasError('required')">Login is required</mat-error>
+                <mat-error *ngIf="form.get('login')?.hasError('minlength')">Minimum {{ controlsMinLength }} symbols</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput [type]="showPassword ? 'text' : 'password'">
+                <button mat-icon-button matSuffix (click)="showHidePassword()" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="showPassword">
+                  <mat-icon>{{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error>
+                <mat-error *ngIf="form.get('password')?.hasError('minlength')">Minimum {{ controlsMinLength }} symbols</mat-error>
+            </mat-form-field>
+            <div class="form__actions">
+                <button mat-raised-button type="submit" color="primary">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
