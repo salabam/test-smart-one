@@ -1,4 +1,32 @@
-<p>
-    cats works!
-</p>
-  
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="filter">
+        <div class="filter__item">
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input formControlName="name" matInput type="text">
+            </mat-form-field>
+        </div>
+        <div class="filter__item">
+            <mat-form-field appearance="outline">
+                <mat-label>Playfulness</mat-label>
+                <mat-select formControlName="playfulness">
+                    <mat-option *ngFor="let option of playfulnessSelectOption" [value]="option.id">{{ option.label }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="filter__item">
+            <mat-form-field appearance="outline">
+                <mat-label>Grooming</mat-label>
+                <mat-select formControlName="grooming">
+                    <mat-option *ngFor="let option of groomingSelectOption" [value]="option.id">{{ option.label }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="filter__item">
+            <button mat-raised-button type="submit" color="primary">Apply</button>
+        </div>
+    </form>
+    <div class="content">
+        <app-pets-grid [gridItems]="cats$| async"></app-pets-grid>
+    </div>
+</div>

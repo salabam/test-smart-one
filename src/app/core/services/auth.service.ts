@@ -35,6 +35,10 @@ export class AuthService {
         return this.router.navigate(['/auth/login']);
     }
 
+    public getApiKey(): string {
+        return localStorage.getItem(this.apiLocalStorageKey);
+    }
+
     private addApiKeyToLocalStorage(): void {
         localStorage.setItem(this.apiLocalStorageKey, this.apiKey);
     }
