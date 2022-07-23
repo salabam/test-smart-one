@@ -1,0 +1,9 @@
+.grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-block: 16px;
+    &__item {
+        padding: 16px;
+    }
+}

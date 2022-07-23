@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Base } from '../../models/base';
 
 @Component({
   selector: 'app-pet-card',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./pet-card.component.scss']
 })
 export class PetCardComponent {
-  @Input() public gridItem: any;
+  @Input() public gridItem: Base;
 }

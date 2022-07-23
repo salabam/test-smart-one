@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { environment } from "environments/environment";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 import { Cat } from "../models/cat";
 import { Dog } from "../models/dog";
 import { CatsFilter, DogsFilter } from "../models/filter";
@@ -17,11 +17,17 @@ export class PetsService {
     constructor(private http: HttpClient, private router: Router) { }
 
     public getDogs(filter: DogsFilter): Observable<Dog[]> {
-        return this.http.get<Dog[]>(this.api + this.dogsUrl, { params: this.getParams(filter)});
+        return this.http.get<Dog[]>(this.api + this.dogsUrl, { params: this.getParams(filter)})
+            .pipe(
+                map(items => items.map(i => new Dog(i)))
+            );
     }
 
     public getCats(filter: CatsFilter): Observable<Cat[]> {
-        return this.http.get<Cat[]>(this.api + this.catsUrl, { params: this.getParams(filter)});
+        return this.http.get<Cat[]>(this.api + this.catsUrl, { params: this.getParams(filter)})
+            .pipe(
+                map(items => items.map(i => new Cat(i)))
+            );
     }
 
     private getParams(filter: DogsFilter | CatsFilter): HttpParams {

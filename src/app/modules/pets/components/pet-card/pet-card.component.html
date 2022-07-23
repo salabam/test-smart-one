@@ -1,3 +1,31 @@
-<ng-container *ngIf="gridItem">
-  {{ gridItem.name }}
-</ng-container>
+<div class="card" *ngIf="gridItem">
+  <div class="card__content">
+    <img width="300" height="200" [src]="gridItem.imgUrl" alt="">
+    <div class="card__info-row" *ngFor="let prop of gridItem.getPropToDisplay()">
+      <span class="label">{{ prop.label }}: </span>
+      <ng-container *ngIf="prop.number; else textTemp">
+        <span class="value">
+          <ng-container *ngTemplateOutlet="rangeTemp; context: { $implicit: prop.value }"></ng-container>
+        </span>
+      </ng-container>
+      <ng-template #textTemp>
+        <span class="value">{{ prop.value }}</span>
+      </ng-template>
+    </div>
+  </div>
+  <div class="card__footer">
+    <button mat-mini-fab [disabled]="gridItem.like" class="like-button" (click)="gridItem.setLike()"><mat-icon>thumb_up</mat-icon></button>
+    <button mat-mini-fab [disabled]="gridItem.dislike" color="warn" (click)="gridItem.setDislike()"><mat-icon>thumb_down</mat-icon></button>
+  </div>
+</div>
+
+<ng-template #rangeTemp let-range>
+  <div class="range {{ 'range_' + range }}">
+    <span class="range-item"></span>
+    <span class="range-item"></span>
+    <span class="range-item"></span>
+    <span class="range-item"></span>
+    <span class="range-item"></span>
+    <span class="range-item"></span>
+  </div>
+</ng-template>

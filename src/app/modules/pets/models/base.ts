@@ -1,6 +1,6 @@
 type AnimalType = 'dog' | 'cat';
 
-export class Base {
+export abstract class Base {
     private _imgUrl: string;
     private _type: AnimalType;
     private _name: string;
@@ -8,8 +8,10 @@ export class Base {
     private _like = false;
     private _dislike = false;
 
-    constructor(source?: Partial<Base>) {
-        this._imgUrl = source?.imgUrl;
+    public abstract getPropToDisplay(): {[key: string]: any }[];
+
+    constructor(source?: any) {
+        this._imgUrl = source?.image_link;
         this._type = source?.type;
         this._name = source?.name;
     }

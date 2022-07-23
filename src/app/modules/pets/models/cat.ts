@@ -24,4 +24,12 @@ export class Cat extends Base {
     get grooming(): number {
         return this._grooming;
     }
+
+    public getPropToDisplay(): { [key: string]: any; }[] {
+        const prop = [];
+        prop.push({ label: 'Name', value: this.name, number: false });
+        prop.push({ label: 'Grooming', value: this.grooming, number: true });
+        prop.push({ label: 'Playfulness', value: this.playfulness, number: true });
+        return prop;
+    }
 }

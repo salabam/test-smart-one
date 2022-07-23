@@ -24,4 +24,13 @@ export class Dog extends Base {
     get barking(): number {
         return this._barking;
     }
+
+    public getPropToDisplay(): { [key: string]: any; }[] {
+        const prop = [];
+        prop.push({ label: 'Name', value: this.name, number: false });
+        prop.push({ label: 'Energy', value: this.energy, number: true });
+        prop.push({ label: 'Barking', value: this.barking, number: true });
+        console.log(prop)
+        return prop;
+    }
 }

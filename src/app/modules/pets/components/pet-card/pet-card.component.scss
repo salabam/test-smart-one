@@ -1,0 +1,93 @@
+.card {
+    width: 300px;
+    box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+    border-radius: 8px;
+    overflow: hidden;
+    
+    &__content {
+        display: flex;
+        flex-direction: column;
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+    &__info-row {
+        padding-inline: 16px;
+        padding-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        .label {
+            font-weight: 500;
+            text-transform: uppercase;
+            width: 50%;
+        }
+    }
+    &__footer {
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        button + button {
+            margin-left: 16px;
+        }
+
+        .like-button {
+            background-color: #00ce11;
+            &:disabled {
+                background-color: rgba(0,0,0,.12);
+            }
+        }
+    }
+}
+
+.range {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    &.range_1 {
+        .range-item:nth-child(1) {
+            background-color: #3f51b5;
+        }
+    }
+    &.range_2 {
+        .range-item:nth-child(1), .range-item:nth-child(2) {
+            background-color: #3f51b5;
+        }
+    }
+    &.range_3 {
+        .range-item:nth-child(1), .range-item:nth-child(2), .range-item:nth-child(3) {
+            background-color: #3f51b5;
+        }
+    }
+    &.range_4 {
+        .range-item {
+            background-color: #3f51b5;
+        }
+        .range-item:nth-child(5), .range-item:nth-child(6) {
+            background-color: #fff;
+        }
+    }
+    &.range_5 {
+        .range-item {
+            background-color: #3f51b5;
+        }
+        .range-item:nth-child(6) {
+            background-color: #fff;
+        }
+    }
+    &.range_6 {
+        .range-item {
+            background-color: #3f51b5;
+        }
+    }
+    .range-item {
+        margin: 2px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #fff;
+        border: 2px solid #3f51b5;
+    }
+}
