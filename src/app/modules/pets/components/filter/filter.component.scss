@@ -1,0 +1,27 @@
+mat-expansion-panel {
+    position: absolute;
+    right: 20px;
+    top: 0;
+}
+
+.mat-expansion-panel-header {
+    height: 30px;
+}
+
+mat-panel-title {
+    margin-right: 0;
+}
+
+.filter__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter__form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: -16px;
+}

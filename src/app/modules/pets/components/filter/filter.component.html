@@ -1,0 +1,32 @@
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+      <mat-panel-title>
+          <div class="filter__header">
+              <span>{{ filterApplied }} filter applied</span>
+              <mat-icon>tune</mat-icon>
+          </div>
+      </mat-panel-title>
+  </mat-expansion-panel-header>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="filter__form">
+    <div class="filter__item" *ngFor="let control of controls">
+      <ng-container *ngIf="control.type === 'input'">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ control.label }}</mat-label>
+          <input [formControlName]="control.controlName" matInput type="text">
+        </mat-form-field>
+      </ng-container>
+      <ng-container *ngIf="control.type === 'select'">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ control.label }}</mat-label>
+          <mat-select [formControlName]="control.controlName">
+              <mat-option *ngFor="let option of control.selectOption" [value]="option.id">{{ option.label }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+    </div>
+    <div class="filter__form-actions">
+      <button mat-raised-button type="submit" color="primary">Apply</button>
+      <button mat-button type="button" (click)="clearFilter($event)">Clear filter</button>
+    </div>
+  </form>
+</mat-expansion-panel>

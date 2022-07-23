@@ -1,31 +1,5 @@
 <div class="container">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="filter">
-        <div class="filter__item">
-            <mat-form-field appearance="outline">
-                <mat-label>Name</mat-label>
-                <input formControlName="name" matInput type="text">
-            </mat-form-field>
-        </div>
-        <div class="filter__item">
-            <mat-form-field appearance="outline">
-                <mat-label>Energy</mat-label>
-                <mat-select formControlName="energy">
-                    <mat-option *ngFor="let option of energySelectOption" [value]="option.id">{{ option.label }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="filter__item">
-            <mat-form-field appearance="outline">
-                <mat-label>Barking</mat-label>
-                <mat-select formControlName="barking">
-                    <mat-option *ngFor="let option of barkingSelectOption" [value]="option.id">{{ option.label }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="filter__item">
-            <button mat-raised-button type="submit" color="primary">Apply</button>
-        </div>
-    </form>
+    <app-filter [controls]="controls" (submitted)="onFormApply($event)"></app-filter>
     <div class="content">
         <app-pets-grid [gridItems]="dogs$ | async"></app-pets-grid>
     </div>

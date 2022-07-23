@@ -20,7 +20,7 @@ export class PetsService {
         return this.http.get<Dog[]>(this.api + this.dogsUrl, { params: this.getParams(filter)});
     }
 
-    public getCats(filter: DogsFilter): Observable<Cat[]> {
+    public getCats(filter: CatsFilter): Observable<Cat[]> {
         return this.http.get<Cat[]>(this.api + this.catsUrl, { params: this.getParams(filter)});
     }
 

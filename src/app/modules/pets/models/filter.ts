@@ -9,3 +9,10 @@ export interface CatsFilter {
     playfulness: number;
     grooming: number;
 }
+
+export interface Control {
+    type: 'input' | 'select';
+    label: string;
+    controlName: string;
+    selectOption?: { id: number, label: string }[];
+}

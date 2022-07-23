@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, take } from 'rxjs';
+import { PetsGlobals } from '../../globals';
 import { Cat } from '../../models/cat';
+import { CatsFilter, Control } from '../../models/filter';
 import { PetsService } from '../../services/pets-service';
 
 @Component({
@@ -10,50 +11,34 @@ import { PetsService } from '../../services/pets-service';
   styleUrls: ['./cats.component.scss']
 })
 export class CatsComponent {
-  
-  public form: FormGroup;
 
-  public playfulnessSelectOption: { id: number, label: string }[] = [
-    { id: 0, label: '0' },
-    { id: 1, label: '1' },
-    { id: 2, label: '2' },
-    { id: 3, label: '3' },
-    { id: 4, label: '4' },
-    { id: 5, label: '5' }
-  ];
-
-  public groomingSelectOption: { id: number, label: string }[] = [
-    { id: 0, label: '0' },
-    { id: 1, label: '1' },
-    { id: 2, label: '2' },
-    { id: 3, label: '3' },
-    { id: 4, label: '4' },
-    { id: 5, label: '5' }
-  ];
-
+  public controls: Control[] = [];
   public cats$: Observable<Cat[]>
 
-  constructor(private petsService: PetsService) { }
-
-  public ngOnInit(): void {
-    this.buildForm();
-    this.cats$ = this.getDogs();
+  constructor(private petsService: PetsService) {
+    this.controls = [
+      { label: 'Name', controlName: 'name', type: 'input' },
+      {
+        label: 'Grooming',
+        controlName: 'grooming',
+        type: 'select',
+        selectOption: [...Array(6)].map((_v, i) => ({ id: i, label: PetsGlobals.Grooming[i] }))
+      },
+      {
+        label: 'Playfulness',
+        controlName: 'playfulness',
+        type: 'select',
+        selectOption: [...Array(6)].map((_v, i) => ({ id: i, label: PetsGlobals.Playfulness[i] }))
+      }
+    ];
   }
-
-  private buildForm(): void {
-    this.form = new FormGroup({
-      name: new FormControl(),
-      playfulness: new FormControl(),
-      grooming: new FormControl()
-    }, { updateOn: 'submit' });
+  
+  public onFormApply(filter: CatsFilter): void {
+    this.cats$ = this.getCats(filter);
   }
-
-  public onSubmit(): void {
-    this.cats$ = this.getDogs();
-  }
-
-  private getDogs(): Observable<Cat[]> {
-    return this.petsService.getCats(this.form.getRawValue()).pipe(take(1));
+  
+  private getCats(filter: CatsFilter): Observable<Cat[]> {
+    return this.petsService.getCats(filter).pipe(take(1));
   }
 
 }

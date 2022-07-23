@@ -15,6 +15,7 @@ import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { DogsComponent } from './pages/dogs/dogs.component';
 import { CatsComponent } from './pages/cats/cats.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PetsGridComponent,
     PetCardComponent,
     DogsComponent,
-    CatsComponent
+    CatsComponent,
+    FilterComponent
   ],
   providers: [
     PetsService
