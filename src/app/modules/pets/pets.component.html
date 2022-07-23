@@ -1,3 +1,7 @@
-<p>
-  pets works!
-</p>
+<mat-toolbar color="primary">
+  <nav class="pets-nav">
+    <a mat-button routerLink="dogs" routerLinkActive="active">Dogs</a>
+    <a mat-button routerLink="cats" routerLinkActive="active">Cats</a>
+  </nav>
+</mat-toolbar>
+<router-outlet></router-outlet>
