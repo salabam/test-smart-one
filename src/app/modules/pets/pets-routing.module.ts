@@ -6,6 +6,7 @@ import { PetsComponent } from './pets.component';
 
 const routes: Routes = [
     { path: '', component: PetsComponent, children: [
+        { path: '', redirectTo: 'dogs', pathMatch: 'full' },
         { path: 'dogs', component: DogsComponent },
         { path: 'cats', component: CatsComponent }
       ]

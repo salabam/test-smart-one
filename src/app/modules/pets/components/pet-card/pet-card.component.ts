@@ -8,4 +8,12 @@ import { Base } from '../../models/base';
 })
 export class PetCardComponent {
   @Input() public gridItem: Base;
+
+  public like(gridItem: Base): void {
+    gridItem.like = !gridItem.like;
+  }
+
+  public dislike(gridItem: Base): void {
+    gridItem.dislike = !gridItem.dislike;
+  }
 }

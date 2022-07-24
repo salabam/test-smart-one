@@ -1,6 +1,8 @@
 <div class="card" *ngIf="gridItem">
+  <div class="card__header">
+    <img width="300" [src]="gridItem.imgUrl" alt="">
+  </div>
   <div class="card__content">
-    <img width="300" height="200" [src]="gridItem.imgUrl" alt="">
     <div class="card__info-row" *ngFor="let prop of gridItem.getPropToDisplay()">
       <span class="label">{{ prop.label }}: </span>
       <ng-container *ngIf="prop.number; else textTemp">
@@ -14,8 +16,8 @@
     </div>
   </div>
   <div class="card__footer">
-    <button mat-mini-fab [disabled]="gridItem.like" class="like-button" (click)="gridItem.setLike()"><mat-icon>thumb_up</mat-icon></button>
-    <button mat-mini-fab [disabled]="gridItem.dislike" color="warn" (click)="gridItem.setDislike()"><mat-icon>thumb_down</mat-icon></button>
+    <button mat-mini-fab class="like-button" [class.pressed]="gridItem.like" (click)="like(gridItem)"><mat-icon>thumb_up</mat-icon></button>
+    <button mat-mini-fab class="dislike-button" [class.pressed]="gridItem.dislike" (click)="dislike(gridItem)"><mat-icon>thumb_down</mat-icon></button>
   </div>
 </div>
 

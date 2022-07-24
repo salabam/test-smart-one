@@ -1,7 +1,11 @@
 mat-expansion-panel {
-    position: absolute;
+    position: fixed;
     right: 20px;
-    top: 0;
+    top: 64px;
+    z-index: 1;
+    @media (max-width: 599px) {
+        top: 56px;
+    }
 }
 
 .mat-expansion-panel-header {

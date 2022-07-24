@@ -31,16 +31,16 @@ export abstract class Base {
     get like(): boolean {
         return this._like;
     }
-    public setLike(): void {
-        this._like = true;
+    set like(value: boolean) {
+        this._like = value;
         this._dislike = false;
     }
 
     get dislike(): boolean {
         return this._dislike;
     }
-    public setDislike(): void {
-        this._dislike = true;
+    set dislike(value: boolean) {
+        this._dislike = value;
         this._like = false;
     }
 

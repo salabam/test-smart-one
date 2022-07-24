@@ -1,16 +1,25 @@
 .card {
-    width: 300px;
+    width: 270px;
+    height: 100%;
     box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
     border-radius: 8px;
     overflow: hidden;
-    
-    &__content {
-        display: flex;
-        flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    &__header {
+        max-height: 300px;
+        overflow: hidden;
         img {
             display: block;
             width: 100%;
+            height: auto;
         }
+    }
+    &__content {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
     }
     &__info-row {
         padding-inline: 16px;
@@ -23,20 +32,32 @@
             text-transform: uppercase;
             width: 50%;
         }
+        .value {
+            width: 50%;
+        }
     }
     &__footer {
         padding: 16px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        button + button {
-            margin-left: 16px;
+        button {
+
+            & + button {
+                margin-left: 16px;
+            }
         }
 
         .like-button {
-            background-color: #00ce11;
-            &:disabled {
-                background-color: rgba(0,0,0,.12);
+            background-color: darken(#00ce11, 20);
+            &.pressed {
+                background-color: #00ce11;
+            }
+        }
+        .dislike-button {
+            background-color: darken(#f44336, 20);
+            &.pressed {
+                background-color: #f44336;
             }
         }
     }
