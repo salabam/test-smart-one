@@ -58,13 +58,13 @@
         }
 
         .like-button {
-            background-color: darken(#00ce11, 20);
+            background-color: rgb(168, 168, 168);
             &.pressed {
                 background-color: #00ce11;
             }
         }
         .dislike-button {
-            background-color: darken(#f44336, 20);
+            background-color: rgb(168, 168, 168);
             &.pressed {
                 background-color: #f44336;
             }
