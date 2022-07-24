@@ -11,16 +11,10 @@ export class Dog extends Base {
         this._barking = source?.barking;
     }
 
-    get energyConverted(): string {
-        return '';
-    }
     get energy(): number {
         return this._energy
     }
 
-    get barkingConverted(): string {
-        return '';
-    }
     get barking(): number {
         return this._barking;
     }
@@ -30,7 +24,6 @@ export class Dog extends Base {
         prop.push({ label: 'Name', value: this.name, number: false });
         prop.push({ label: 'Energy', value: this.energy, number: true });
         prop.push({ label: 'Barking', value: this.barking, number: true });
-        console.log(prop)
         return prop;
     }
 }

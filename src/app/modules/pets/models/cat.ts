@@ -11,16 +11,10 @@ export class Cat extends Base {
         this._grooming = source?.grooming;
     }
 
-    get playfulnessConverted(): string {
-        return '';
-    }
     get playfulness(): number {
         return this._playfulness
     }
 
-    get groomingConverted(): string {
-        return '';
-    }
     get grooming(): number {
         return this._grooming;
     }
