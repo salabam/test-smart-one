@@ -2,7 +2,7 @@
   <mat-expansion-panel-header>
       <mat-panel-title>
           <div class="filter__header">
-              <span>{{ filterApplied }} filter applied</span>
+              <span>{{ filterApplied > 0 ? filterApplied : 'No' }} filters applied</span>
               <mat-icon [color]="filterApplied > 0 ? 'warn' : ''">tune</mat-icon>
           </div>
       </mat-panel-title>

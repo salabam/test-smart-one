@@ -1,18 +1,14 @@
 <div class="card" *ngIf="gridItem">
   <div class="card__header">
-    <img width="300" loading="lazy" [src]="gridItem.imgUrl" alt="">
+    {{ gridItem.name }}
   </div>
   <div class="card__content">
+    <div class="card__info-row img">
+      <img width="300" loading="lazy" [src]="gridItem.imgUrl" alt="">
+    </div>
     <div class="card__info-row" *ngFor="let prop of gridItem.getPropToDisplay()">
       <span class="label">{{ prop.label }}: </span>
-      <ng-container *ngIf="prop.number; else textTemp">
-        <span class="value">
-          <ng-container *ngTemplateOutlet="rangeTemp; context: { $implicit: prop.value }"></ng-container>
-        </span>
-      </ng-container>
-      <ng-template #textTemp>
-        <span class="value">{{ prop.value }}</span>
-      </ng-template>
+      <ng-container *ngTemplateOutlet="rangeTemp; context: { $implicit: prop.value }"></ng-container>
     </div>
   </div>
   <div class="card__footer">
